@@ -22,7 +22,7 @@
   "docs/Bank.WebApi.Tests.BankAccountTests.html": {
     "href": "docs/Bank.WebApi.Tests.BankAccountTests.html",
     "title": "Class BankAccountTests | Bank App",
-    "summary": "Class BankAccountTests Namespace Bank.WebApi.Tests Assembly Bank.WebApi.Tests.dll public class BankAccountTests Inheritance object BankAccountTests Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods Debit_WithValidAmount_UpdatesBalance() [Test] public void Debit_WithValidAmount_UpdatesBalance()"
+    "summary": "Class BankAccountTests Namespace Bank.WebApi.Tests Assembly Bank.WebApi.Tests.dll public class BankAccountTests Inheritance object BankAccountTests Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Methods Credit_WithValidAmount_UpdatesBalance() [Test] public void Credit_WithValidAmount_UpdatesBalance() Debit_WithValidAmount_UpdatesBalance() [Test] public void Debit_WithValidAmount_UpdatesBalance()"
   },
   "docs/Bank.WebApi.Tests.html": {
     "href": "docs/Bank.WebApi.Tests.html",

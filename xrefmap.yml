@@ -102,6 +102,19 @@ references:
   commentId: T:Bank.WebApi.Tests.BankAccountTests
   fullName: Bank.WebApi.Tests.BankAccountTests
   nameWithType: BankAccountTests
+- uid: Bank.WebApi.Tests.BankAccountTests.Credit_WithValidAmount_UpdatesBalance
+  name: Credit_WithValidAmount_UpdatesBalance()
+  href: docs/Bank.WebApi.Tests.BankAccountTests.html#Bank_WebApi_Tests_BankAccountTests_Credit_WithValidAmount_UpdatesBalance
+  commentId: M:Bank.WebApi.Tests.BankAccountTests.Credit_WithValidAmount_UpdatesBalance
+  fullName: Bank.WebApi.Tests.BankAccountTests.Credit_WithValidAmount_UpdatesBalance()
+  nameWithType: BankAccountTests.Credit_WithValidAmount_UpdatesBalance()
+- uid: Bank.WebApi.Tests.BankAccountTests.Credit_WithValidAmount_UpdatesBalance*
+  name: Credit_WithValidAmount_UpdatesBalance
+  href: docs/Bank.WebApi.Tests.BankAccountTests.html#Bank_WebApi_Tests_BankAccountTests_Credit_WithValidAmount_UpdatesBalance_
+  commentId: Overload:Bank.WebApi.Tests.BankAccountTests.Credit_WithValidAmount_UpdatesBalance
+  isSpec: "True"
+  fullName: Bank.WebApi.Tests.BankAccountTests.Credit_WithValidAmount_UpdatesBalance
+  nameWithType: BankAccountTests.Credit_WithValidAmount_UpdatesBalance
 - uid: Bank.WebApi.Tests.BankAccountTests.Debit_WithValidAmount_UpdatesBalance
   name: Debit_WithValidAmount_UpdatesBalance()
   href: docs/Bank.WebApi.Tests.BankAccountTests.html#Bank_WebApi_Tests_BankAccountTests_Debit_WithValidAmount_UpdatesBalance
