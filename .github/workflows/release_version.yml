@@ -1,0 +1,45 @@
+name: Release Version
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_VERSION: '8.0'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build solution in Release mode
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Pack NuGet package for release
+        run: dotnet pack ./Bank.Domain/Bank.Domain.csproj --configuration Release --output ./nupkg
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./nupkg/*.nupkg
+          asset_name: Bank.Domain.$(date +'%Y%m%d%H%M').nupkg
+          asset_content_type: application/octet-stream
