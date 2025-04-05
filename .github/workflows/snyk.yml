@@ -8,7 +8,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: snyk/actions/setup@master
+
+      - name: Setup Snyk CLI
+        uses: snyk/actions/setup@master
 
       - name: Configurando la versión de .NET
         uses: actions/setup-dotnet@v4
@@ -25,7 +27,7 @@ jobs:
           snyk code test --json | snyk-to-html -o code-test-results.html
 
       - name: Upload reporte HTML como artefacto
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: snyk-code-report
           path: code-test-results.html
