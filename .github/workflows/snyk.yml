@@ -1,6 +1,6 @@
 name: Snyk Analysis
 env:
-  DOTNET_VERSION: '8.x'                     # la versión de .NET
+  DOTNET_VERSION: '8.0'
 on: push
 jobs:
   security:
@@ -8,15 +8,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: snyk/actions/setup@master
-      - name: Configurando la versión de NET
+
+      - name: Setup Snyk CLI
+        uses: snyk/actions/setup@master
+
+      - name: Configurando la versión de .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}  
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
       - name: Snyk monitor
         run: snyk code test --sarif-file-output=snyk.sarif
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}          
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Generar reporte HTML de Snyk
+        run: |
+          snyk code test --json | snyk-to-html -o code-test-results.html
+
+      - name: Upload reporte HTML como artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: snyk-code-report
+          path: code-test-results.html
+
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
         with:
