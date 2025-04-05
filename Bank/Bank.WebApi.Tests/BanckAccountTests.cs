@@ -19,5 +19,22 @@ namespace Bank.WebApi.Tests
             double actual = account.Balance;
             Assert.AreEqual(expected, actual, 0.001, "Account not debited correctly");
         }
+
+        [Test]
+        public void Credit_WithValidAmount_UpdatesBalance()
+        {
+            // Arrange
+            double beginningBalance = 10.00;
+            double creditAmount = 5.00;
+            double expected = 15.00;
+            BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
+
+            // Act
+            account.Credit(creditAmount);
+
+            // Assert
+            double actual = account.Balance;
+            Assert.AreEqual(expected, actual, 0.001, "Account not credited correctly");
+        }
     }
 }
