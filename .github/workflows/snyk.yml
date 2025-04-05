@@ -1,6 +1,6 @@
 name: Snyk Analysis
 env:
-  DOTNET_VERSION: '8.0'
+  DOTNET_VERSION: '8.x'
 on: push
 jobs:
   security:
@@ -8,9 +8,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Snyk CLI
-        uses: snyk/actions/setup@master
+      - uses: snyk/actions/setup@master
 
       - name: Configurando la versión de .NET
         uses: actions/setup-dotnet@v4
