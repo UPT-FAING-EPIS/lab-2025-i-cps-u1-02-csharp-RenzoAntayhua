@@ -36,11 +36,12 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Rename package with timestamp
+      - name: Detect .nupkg file and extract name
+        id: detect_nupkg
         run: |
-            timestamp=$(date +'%Y%m%d%H%M')
-            mv ./nupkg/Bank.WebApi.1.0.0.nupkg ./nupkg/Bank.WebApi.$timestamp.nupkg
-            echo "RENAMED_NUPKG=Bank.WebApi.$timestamp.nupkg" >> $GITHUB_ENV
+          file=$(find ./nupkg -name "*.nupkg" | head -n 1)
+          echo "file_path=$file" >> $GITHUB_OUTPUT
+          echo "file_name=$(basename $file)" >> $GITHUB_OUTPUT
         
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
@@ -48,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./nupkg/${{ env.RENAMED_NUPKG }}
-          asset_name: ${{ env.RENAMED_NUPKG }}
+          asset_path: ${{ steps.detect_nupkg.outputs.file_path }}
+          asset_name: ${{ steps.detect_nupkg.outputs.file_name }}
           asset_content_type: application/octet-stream
-        
+      
