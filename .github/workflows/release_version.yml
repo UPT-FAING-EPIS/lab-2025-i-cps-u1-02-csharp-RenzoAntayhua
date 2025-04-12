@@ -18,7 +18,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Build solution in Release mode
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build "Bank/Bank.sln" --configuration Release --no-restore
 
       - name: Pack NuGet package for release
         run: dotnet pack ./Bank.Domain/Bank.Domain.csproj --configuration Release --output ./nupkg
