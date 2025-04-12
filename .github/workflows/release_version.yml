@@ -35,7 +35,7 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
-
+          
       - name: Detect .nupkg file and extract name
         id: detect_nupkg
         run: |
