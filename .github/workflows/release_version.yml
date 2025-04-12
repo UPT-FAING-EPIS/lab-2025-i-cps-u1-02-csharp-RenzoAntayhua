@@ -17,6 +17,8 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: Restore build
+        run : dotnet restore "Bank/Bank.sln"
       - name: Build solution in Release mode
         run: dotnet build "Bank/Bank.sln" --configuration Release --no-restore
 
