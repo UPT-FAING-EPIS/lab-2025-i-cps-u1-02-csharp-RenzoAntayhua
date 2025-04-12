@@ -23,7 +23,7 @@ jobs:
         run: dotnet build "Bank/Bank.sln" --configuration Release --no-restore
 
       - name: Pack NuGet package for release
-        run: dotnet pack "./Bank.WebApi/Bank.WebApi.csproj" --configuration Release --output ./nupkg
+        run: dotnet pack "Bank/Bank.WebApi/Bank.WebApi.csproj" --configuration Release --output ./nupkg
 
       - name: Create GitHub Release
         id: create_release
